@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+    <title>隔空取物</title>
+    <script type="text/javascript">
+        $(function() {
+            <!--var $video = $("#videoplayer");-->
+            var now = new Date();
+            var url = '/download/files' + '?' + now.getTime();
+
+            $.getJSON(url, function(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var $li = $('<li>' + data[i].name + '</li>');
+                    $li.attr("path", data[i].path);
+                    $("#filelist").append($li);
+                    $li.click(function() {
+                        var p = "/download/files/" + $(this).attr("path");
+                        <!-- 使用video进行播放 -->
+                        <!--$video.attr("src", p);-->
+                        <!--$video[0].play();-->
+                        <!-- 请求数据，若浏览器可以识别则显示在网页上，用户手动将其下载；否则直接下载 -->
+                        var $form = $('<form method="GET"></form>');
+                        $form.attr('action', p);
+                        $form.appendTo($('body'));
+                        $form.submit();
+                        <!--开启新窗口请求数据-->
+                        <!--window.open(p);-->
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<ul id="filelist" style="float:left;"></ul>
+<!--video id="videoplayer" style="width:300px;marginLeft:100px;" controls="controls"-->
+</video>
+
+</body>
+
+</html>
