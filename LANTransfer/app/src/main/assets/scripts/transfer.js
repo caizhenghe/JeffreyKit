@@ -49,7 +49,7 @@ $(function() {
 
 	function loadFileList() {
 		var now = new Date();
-		var url = "upload/files?";
+		var url = "files?";
 		$.getJSON(url + now.getTime(), function(data) {
 			files = data;
 			fillFilesContainer();

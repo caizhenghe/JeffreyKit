@@ -4,4 +4,5 @@
     <string name="notice">下载文件(手机->电脑):\n1.获取手机IP。\n2.将想要下载的文件放到手机\"/Download\"目录下。\n3.在电脑浏览器中输入网址\"手机IP:54321/download\"。\n4.在文件列表中单击想要下载的文件。\n\n
         上传文件(电脑->手机):\n1.获取手机IP。\n2.在电脑浏览器中输入网址\"手机IP:54321/Upload\"。\n3.将想要上传的文件拖动至浏览器中。\n4.上传完成后在手机\"/upload\"目录查看文件。
     </string>
+    <string name="error_not_found_content">Not found!</string>
 </resources>

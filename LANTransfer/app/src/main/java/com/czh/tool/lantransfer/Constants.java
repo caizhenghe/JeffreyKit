@@ -42,8 +42,14 @@ public class Constants {
     }
 
     class ErrorCode {
-        public static final int SERVER_DENY = 500;
+        public static final int SERVER_ERROR = 500;
 
         public static final int NOT_FOUND = 404;
+    }
+
+    class JsonKey{
+        public static final String FILE_NAME= "name";
+        public static final String FILE_SIZE= "size";
+
     }
 }
