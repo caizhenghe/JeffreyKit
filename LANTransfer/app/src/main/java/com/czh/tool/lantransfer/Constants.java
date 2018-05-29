@@ -30,7 +30,7 @@ public class Constants {
 
     class Url{
         public static final String RESOURCE_IMAGE = "/images/.*";
-        public static final String RESOURCE_SCRIPT = "/script/.*";
+        public static final String RESOURCE_SCRIPT = "/scripts/.*";
         public static final String RESOURCE_CSS = "/css/.*";
 
         public static final String INDEX = "/";

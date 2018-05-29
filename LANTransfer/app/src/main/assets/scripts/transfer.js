@@ -45,6 +45,12 @@ $(function() {
 		var fileName = $node.siblings(':first').text();
 		var url = "files/" + fileName;
 		window.location = url;
+//      window.open(url); // 新建一个窗口进行下载
+//        var $eleForm = $("<form method='get'></form>");
+//        $eleForm.attr("action",url);
+//        $(document.body).append($eleForm);
+//        //提交表单，实现下载
+//        $eleForm.submit();
 	}
 
 	function loadFileList() {
@@ -53,8 +59,8 @@ $(function() {
 		$.getJSON(url + now.getTime(), function(data) {
 			files = data;
 			fillFilesContainer();
-			//$(".download").click(downloadBook);
-			//$(".trash").click(deleteBook);
+			$(".download").click(downloadBook);
+			$(".trash").click(deleteBook);
 		});
 	}
 

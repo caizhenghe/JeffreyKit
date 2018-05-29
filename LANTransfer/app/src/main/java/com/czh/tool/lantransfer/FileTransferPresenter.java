@@ -105,19 +105,20 @@ public class FileTransferPresenter implements FileTransferContract.Presenter {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    File file = new File(filePath);
+                    File file = new File(Constants.DIR, filePath);
                     if (file.isFile() && file.exists()) {
                         try {
-                            is = new FileInputStream(filePath);
+                            is = new FileInputStream(file);
                             response.sendStream(is, is.available());
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
+                        } catch (Exception e) {
+                            response.code(Constants.ErrorCode.NOT_FOUND).send(mContext.getResources()
+                                    .getString(R.string.error_not_found_content));
                             e.printStackTrace();
                         }
                         return;
                     }
-                    response.code(Constants.ErrorCode.NOT_FOUND).send(mContext.getResources().getString(R.string.error_not_found_content));
+                    response.code(Constants.ErrorCode.NOT_FOUND).send(mContext.getResources()
+                            .getString(R.string.error_not_found_content));
 
                 }
         );
@@ -176,8 +177,9 @@ public class FileTransferPresenter implements FileTransferContract.Presenter {
             if (resourceName.indexOf("?") > 0) {
                 resourceName = resourceName.substring(0, resourceName.indexOf("?"));
             }
-            if (!TextUtils.isEmpty(NetworkUtils.getContentTypeByResourceName(resourceName))) {
-                response.setContentType(NetworkUtils.getContentTypeByResourceName(resourceName));
+            String contentType = NetworkUtils.getContentTypeByResourceName(resourceName);
+            if (!TextUtils.isEmpty(contentType)) {
+                response.setContentType(contentType);
             }
             BufferedInputStream bInputStream = new BufferedInputStream(mContext.getAssets().open(resourceName));
             response.sendStream(bInputStream, bInputStream.available());
