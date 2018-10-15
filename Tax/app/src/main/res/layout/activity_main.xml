@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.czh.tax.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <EditText
+            android:id="@+id/input_salary_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:hint="税前工资"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/input_takeoff_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:hint="额外扣除"
+            android:textSize="17dp" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tax_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_layout"
+        android:layout_marginTop="20dp"
+        android:text="应缴税："
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/security_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tax_tv"
+        android:layout_marginTop="20dp"
+        android:text="应缴社保："
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/fund_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/security_tv"
+        android:layout_marginTop="20dp"
+        android:text="应缴公积金："
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/real_salary_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fund_tv"
+        android:layout_marginTop="20dp"
+        android:text="到手工资："
+        android:textSize="16dp" />
+
+    <!--<EditText-->
+    <!--android:id="@+id/leave_et"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/real_salary_tv"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:hint="事假小时数（选填）"-->
+    <!--android:textSize="17dp" />-->
+
+    <!--<EditText-->
+    <!--android:id="@+id/weak_leave_et"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/leave_et"-->
+    <!--android:hint="病假小时数（选填）"-->
+    <!--android:textSize="17dp" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/real_tv"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/weak_leave_et"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:text="扣除后实际金额：(TODO:待开发)"-->
+    <!--android:textSize="16dp" />-->
+
+    <Button
+        android:id="@+id/calculate_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/real_salary_tv"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/selector_calculate_btn"
+        android:onClick="doClick"
+        android:text="Calculate"
+        android:textColor="#ffffff"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/tips_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calculate_btn"
+        android:layout_marginTop="20dp"
+        android:text="Tips:\n1.公积金按5%标准计算"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/security_tips_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tips_tv"
+        android:onClick="doClick"
+        android:text="2.社保计算规则"
+        android:textColor="#0099FF"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/residence_iv"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/residence" />
+</RelativeLayout>
