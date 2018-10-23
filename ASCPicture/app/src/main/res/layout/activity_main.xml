@@ -7,14 +7,18 @@
     tools:context="com.czh.ascpicture.MainActivity">
 
     <ImageView
-        android:layout_centerInParent="true"
         android:id="@+id/marie_iv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:onClick="doClick"
+        android:visibility="gone" />
 
-    <!--<Button-->
-        <!--android:onClick="doClick"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:layout_height="44dp"-->
-        <!--android:text="show"/>-->
+    <ImageView
+        android:id="@+id/add_iv"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_centerInParent="true"
+        android:onClick="doClick"
+        android:src="@drawable/plus" />
 </RelativeLayout>
