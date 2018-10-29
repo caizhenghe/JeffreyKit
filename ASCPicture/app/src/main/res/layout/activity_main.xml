@@ -21,4 +21,19 @@
         android:layout_centerInParent="true"
         android:onClick="doClick"
         android:src="@drawable/plus" />
+
+    <Button
+        android:id="@+id/decode_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="doClick"
+        android:text="Decode" />
+
+    <Button
+        android:id="@+id/encode_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="doClick"
+        android:text="Encode" />
 </RelativeLayout>

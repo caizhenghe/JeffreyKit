@@ -79,7 +79,7 @@ public class BitmapUtils {
 
     public static Bitmap createAsciiPic(Context context, Bitmap bitmap) {
         final String base = "#8XOHLTI)i=+;:,.";// 字符串由复杂到简单
-//        final String base = "#,.0123456789:;@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";// 字符串由复杂到简单
+//        final String base = "#MYLI)eearuvooi=+;:,.";// 字符串由复杂到简单
         StringBuilder text = new StringBuilder();
         // 根据Bitmap的灰度将Bitmap转换成字符串
         for (int y = 0; y < bitmap.getHeight(); y += 2) {
@@ -157,7 +157,7 @@ public class BitmapUtils {
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + filePath)));
     }
 
-    private static Bitmap scale(Context context, Bitmap originBitmap) {
+    public static Bitmap scale(Context context, Bitmap originBitmap) {
         // 比较原图宽度和屏幕宽度/scale,取小值，要求保持原图宽高比例不变
         // FIXME: 2018/10/23 scale如何得出
         int reqWidth, reqHeight;
