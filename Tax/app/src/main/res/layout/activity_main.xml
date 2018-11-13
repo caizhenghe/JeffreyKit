@@ -15,8 +15,7 @@
         android:id="@+id/input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/input_salary_et"
@@ -26,6 +25,16 @@
             android:layout_weight="1"
             android:hint="税前工资"
             android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/input_old_salary_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:hint="调薪前工资"
+            android:textSize="17dp"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/input_takeoff_et"

@@ -8,4 +8,8 @@
     <item
         android:id="@+id/is_not_sz_residence"
         android:title="非深户"/>
+
+    <item
+        android:id="@+id/change_salary_recently_for_sz_residence"
+        android:title="近期调薪（深户）"/>
 </menu>
