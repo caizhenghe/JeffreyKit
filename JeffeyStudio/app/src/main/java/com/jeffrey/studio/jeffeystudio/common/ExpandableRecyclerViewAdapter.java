@@ -7,24 +7,23 @@ import android.view.ViewGroup;
 /**
  * Copyright (C), 2019, TP-LINK TECHNOLOGIES CO., LTD.
  *
- * 支持EmptyView、HeaderView、FooterView
+ * 支持二级列表的RecyclerView
  *
- * 1.由外部决定三个View是否显示以及显示的样式。
- * 2.position的转换逻辑封装在基类中，不暴露给子类。
- * 3.保证拓展性，支持让子类定义多Type布局。
- * 4.保证内聚性，强制子类使用VH缓存和管理View。
- *
+ * 不继承{@link MultipleRecyclerViewAdapter}, 避免过度封装
  * @author caizhenghe
- * @ClassName: MultipleRecyclerViewAdapter
- * @Description: Version 1.0.0, 2019-01-21, caizhenghe create file.
+ * @ClassName: ExpandableRecyclerViewAdapter
+ * @Description: Version 1.0.0, 2019-01-22, caizhenghe create file.
  */
 
-public abstract class MultipleRecyclerViewAdapter<VH extends RecyclerView.ViewHolder>
-        extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public abstract class ExpandableRecyclerViewAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
 
     private static final int TYPE_EMPTY = ViewHolderProducer.VIEW_TYPE_EMPTY;
     private static final int TYPE_HEADER = ViewHolderProducer.VIEW_TYPE_HEADER;
     private static final int TYPE_FOOTER = ViewHolderProducer.VIEW_TYPE_FOOTER;
+    private static final int TYPE_GROUP = 1;
+    private static final int TYPE_CHILD = 2;
+
 
     private boolean mIsEmpty;
     private ViewHolderProducer mEmptyViewProducer;
@@ -66,6 +65,7 @@ public abstract class MultipleRecyclerViewAdapter<VH extends RecyclerView.ViewHo
         }
     }
 
+
     @Override
     public int getItemViewType(int position) {
         int emptyViewCarry = (mIsEmpty && mEmptyViewProducer != null) ? 1 : 0;
@@ -87,7 +87,6 @@ public abstract class MultipleRecyclerViewAdapter<VH extends RecyclerView.ViewHo
             throw new IllegalStateException("getViewType conflicts with base type: " + viewType);
         }
     }
-
 
     @Override
     public int getItemCount() {
