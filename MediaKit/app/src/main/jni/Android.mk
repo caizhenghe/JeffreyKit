@@ -45,7 +45,7 @@ include $(PREBUILT_SHARED_LIBRARY)
 # Program
 include $(CLEAR_VARS)
 LOCAL_MODULE := mediakit
-LOCAL_SRC_FILES := com_czh_ffmpeg_mediakit_MediaKit.cpp
+LOCAL_SRC_FILES := com_czh_ffmpeg_jni_MediaKit.cpp
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/include
 LOCAL_LDLIBS := -llog -lz
 LOCAL_SHARED_LIBRARIES := avcodec avdevice avfilter avformat avutil postproc swresample swscale

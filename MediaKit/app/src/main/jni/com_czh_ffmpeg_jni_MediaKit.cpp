@@ -1,4 +1,4 @@
-#include "com_czh_ffmpeg_mediakit_MediaKit.h"
+#include "com_czh_ffmpeg_jni_MediaKit.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,7 +26,7 @@ extern "C" {
 }
 #endif
 
-jstring Java_com_czh_ffmpeg_mediakit_MediaKit_getAvcodecConfigurationNative
+jstring Java_com_czh_ffmpeg_jni_MediaKit_getAvcodecConfigurationNative
         (JNIEnv *env, jobject thiz) {
     char info[10000] = {0};
     sprintf(info, "%s\n", avcodec_configuration());
@@ -43,7 +43,7 @@ void custom_log(void *ptr, int level, const char *fmt, va_list vl) {
     }
 }
 
-JNIEXPORT jint JNICALL Java_com_czh_ffmpeg_mediakit_MediaKit_decodeNative
+JNIEXPORT jint JNICALL Java_com_czh_ffmpeg_jni_MediaKit_decodeNative
         (JNIEnv *env, jobject obj, jstring input_jstr, jstring output_jstr) {
     AVFormatContext *pFormatCtx;
     int i, videoindex;

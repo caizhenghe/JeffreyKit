@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MediaKit mMediaKit = new MediaKit();
     private static final String INPUT_FILE_PATH =
-            Environment.getExternalStorageDirectory().getAbsolutePath()+"/AVData/H264.v";
+            Environment.getExternalStorageDirectory().getAbsolutePath()+"/AVData/input.mp4";
     private static final String OUTPUT_FILE_PATH =
             Environment.getExternalStorageDirectory().getAbsolutePath()+"/AVData/out.yuv";
     @Override

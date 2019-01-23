@@ -12,7 +12,7 @@ extern "C" {
  * Method:    getAvcodecConfigurationNative
  * Signature: ()Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_com_czh_ffmpeg_mediakit_MediaKit_getAvcodecConfigurationNative
+JNIEXPORT jstring JNICALL Java_com_czh_ffmpeg_jni_MediaKit_getAvcodecConfigurationNative
   (JNIEnv *, jobject);
 
 /*
@@ -20,7 +20,7 @@ JNIEXPORT jstring JNICALL Java_com_czh_ffmpeg_mediakit_MediaKit_getAvcodecConfig
  * Method:    decodeNative
  * Signature: (Ljava/lang/String;Ljava/lang/String;)I
  */
-JNIEXPORT jint JNICALL Java_com_czh_ffmpeg_mediakit_MediaKit_decodeNative
+JNIEXPORT jint JNICALL Java_com_czh_ffmpeg_jni_MediaKit_decodeNative
   (JNIEnv *, jobject, jstring, jstring);
 
 #ifdef __cplusplus
