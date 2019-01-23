@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.czh.ffmpeg.common.MultipleRecyclerViewAdapter;
+import com.czh.ffmpeg.render.GLFrameRender;
+import com.czh.ffmpeg.render.GLVideoView;
 
 /**
  * Copyright (C), 2019, TP-LINK TECHNOLOGIES CO., LTD.
@@ -32,6 +34,7 @@ public class VideoAdapter extends MultipleRecyclerViewAdapter<VideoAdapter.Video
         View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_video, parent, false);
         VideoHolder vh = new VideoHolder(item);
         vh.surface = item.findViewById(R.id.video_item_surface_view);
+        vh.surface.setRenderer(new GLFrameRender(parent.getContext(), vh.surface));
         return vh;
     }
 
@@ -41,7 +44,8 @@ public class VideoAdapter extends MultipleRecyclerViewAdapter<VideoAdapter.Video
     }
 
     class VideoHolder extends RecyclerView.ViewHolder {
-        GLSurfaceView surface;
+        GLVideoView surface;
+
         public VideoHolder(View itemView) {
             super(itemView);
         }

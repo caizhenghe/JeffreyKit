@@ -3,7 +3,6 @@ package com.czh.ffmpeg;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -26,10 +25,8 @@ public class VideoGridActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_grid);
         VideoAdapter adapter = new VideoAdapter();
         mRv = findViewById(R.id.video_grid_rv);
+        mRv.setLayoutManager(new GridLayoutManager(this, 3));
         mRv.setAdapter(adapter);
-        mRv.setLayoutManager(new GridLayoutManager(this, 4));
-
-
     }
 
     public static void startActivity(Context context) {

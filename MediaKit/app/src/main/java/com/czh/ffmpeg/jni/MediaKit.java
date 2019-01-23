@@ -1,4 +1,4 @@
-package com.czh.ffmpeg.common;
+package com.czh.ffmpeg.jni;
 
 public class MediaKit {
     static {

@@ -5,13 +5,16 @@
     Version 1.0.0, //, caizhenghe create file.
 -->
 
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#44ff0000">
 
-    <android.opengl.GLSurfaceView
+    <com.czh.ffmpeg.render.GLVideoView
         android:id="@+id/video_item_surface_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="60dp" />
+
 
 </android.support.constraint.ConstraintLayout>
