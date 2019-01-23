@@ -1,4 +1,4 @@
-package com.czh.ffmpeg.mediakit;
+package com.czh.ffmpeg.utils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -1,13 +1,12 @@
-package com.czh.ffmpeg.mediakit;
+package com.czh.ffmpeg;
 
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.czh.ffmpeg.common.MediaKit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.decode_btn:
                 mMediaKit.decode(INPUT_FILE_PATH, OUTPUT_FILE_PATH);
+                break;
+            case R.id.texture_test_btn:
+                VideoGridActivity.startActivity(this);
                 break;
         }
     }

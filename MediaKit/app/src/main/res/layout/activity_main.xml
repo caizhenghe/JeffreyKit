@@ -7,11 +7,20 @@
     tools:context=".MainActivity">
 
     <Button
-        android:onClick="doClick"
         android:id="@+id/decode_btn"
         android:layout_width="match_parent"
         android:layout_height="44dp"
+        android:onClick="doClick"
         android:text="Soft Decode" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/texture_test_btn"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:onClick="doClick"
+        android:text="Texture View"
+        app:layout_constraintTop_toBottomOf="@id/decode_btn" />
 
     <TextView
         android:id="@+id/text_view"
