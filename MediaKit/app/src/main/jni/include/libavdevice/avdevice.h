@@ -146,7 +146,7 @@ enum AVAppToDevMessageType {
     /**
      * Request pause/play.
      *
-     * Application requests pause/unpause playback.
+     * BaseApplication requests pause/unpause playback.
      * Mostly usable with devices that have internal buffer.
      * By default devices are not paused.
      *
@@ -207,9 +207,9 @@ enum AVDevToAppMessageType {
      * Device requests to create a window buffer. Exact meaning is device-
      * and application-dependent. Message is sent before rendering first
      * frame and all one-shot initializations should be done here.
-     * Application is allowed to ignore preferred window buffer size.
+     * BaseApplication is allowed to ignore preferred window buffer size.
      *
-     * @note: Application is obligated to inform about window buffer size
+     * @note: BaseApplication is obligated to inform about window buffer size
      *        with AV_APP_TO_DEV_WINDOW_SIZE message.
      *
      * data: AVDeviceRect: preferred size of the window buffer.

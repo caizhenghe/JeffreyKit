@@ -4,7 +4,7 @@ android {
     compileSdkVersion global_compileSdkVersion
     buildToolsVersion global_buildToolsVersion
     defaultConfig {
-        applicationId "com.czh.ffmpeg.mediakit"
+        applicationId "com.czh.ffmpeg"
         minSdkVersion global_minSdkVersion
         targetSdkVersion global_targetSdkVersion
         versionCode 1
