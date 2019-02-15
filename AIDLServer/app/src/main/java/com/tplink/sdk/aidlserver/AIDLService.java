@@ -2,7 +2,9 @@ package com.tplink.sdk.aidlserver;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
+import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -27,7 +29,7 @@ public class AIDLService extends Service {
     private static final String TAG = AIDLService.class.getSimpleName();
     private AtomicBoolean mIsServiceDestroyed = new AtomicBoolean(false);
     private CopyOnWriteArrayList<Book> mBookList = new CopyOnWriteArrayList<>();
-    private CopyOnWriteArrayList<IOnNewBookArrivedListener> mListenerList= new CopyOnWriteArrayList<>();
+    private RemoteCallbackList<IOnNewBookArrivedListener> mListenerList = new RemoteCallbackList<>();
     private IBinder mBinder = new IBookManager.Stub() {
 
         @Override
@@ -42,20 +44,19 @@ public class AIDLService extends Service {
 
         @Override
         public void registerListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            if (!mListenerList.contains(listener))
-                mListenerList.add(listener);
-            else
-                Log.d(TAG, "Listener already exist!");
-            Log.d(TAG, "registerListener: size = " + mListenerList.size());
+            mListenerList.register(listener);
+            // Log.d(TAG, "registerListener: size = " + mListenerList.size());
         }
 
         @Override
         public void unregisterListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            if (!mListenerList.contains(listener))
-                mListenerList.remove(listener);
-            else
-                Log.d(TAG, "Listener not found, unregister fail!");
-            Log.d(TAG, "unregisterListener: size = " + mListenerList.size());
+            mListenerList.unregister(listener);
+
+            mListenerList.beginBroadcast();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                Log.d(TAG, "unregisterListener: size = " + mListenerList.getRegisteredCallbackCount());
+            }
+            mListenerList.finishBroadcast();
         }
     };
 
@@ -94,13 +95,18 @@ public class AIDLService extends Service {
                 int bookId = mBookList.size() + 1;
                 Book newBook = new Book(bookId, "NewBook#" + bookId);
                 mBookList.add(newBook);
-                try {
-                    for (IOnNewBookArrivedListener listener : mListenerList) {
+                final int N = mListenerList.beginBroadcast();
+
+                for (int i = 0; i < N; i++) {
+                    try {
+                        IOnNewBookArrivedListener listener = mListenerList.getBroadcastItem(i);
                         listener.onBookArrived(newBook);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
-                } catch (RemoteException e) {
-                    e.printStackTrace();
                 }
+
+                mListenerList.finishBroadcast();
             }
         }
     }
