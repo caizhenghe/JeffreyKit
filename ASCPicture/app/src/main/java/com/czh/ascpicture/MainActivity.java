@@ -2,21 +2,22 @@ package com.czh.ascpicture;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 
+/**
+ * @author caizhenghe
+ */
 public class MainActivity extends AppCompatActivity {
     private static final String ROOT_DIR = Environment.getExternalStorageDirectory().getAbsolutePath();
     private static final String PIC_LIST_DIR = ROOT_DIR + "/DCIM/video/tmp/";
@@ -80,12 +81,12 @@ public class MainActivity extends AppCompatActivity {
                 mOutBitmap = null;
                 Toast.makeText(this, "图片已删除", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.decode_btn:
-                mediaDecode(5);
-                break;
-            case R.id.encode_btn:
-                mediaEncode("mp4", 25);
-                break;
+//            case R.id.decode_btn:
+//                mediaDecode(5);
+//                break;
+//            case R.id.encode_btn:
+//                mediaEncode("mp4", 25);
+//                break;
         }
     }
 
@@ -175,7 +176,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void mediaEncode(String format, int fps) {
         File file = new File(VIDEO_TEST_PATH);
-        if (!file.exists()) return;
+        if (!file.exists()) {
+            return;
+        }
         String fileName = file.getName();
         int i = fileName.lastIndexOf(".");
         if (i == -1 || i == 0) {

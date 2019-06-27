@@ -11,6 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * @author caizhenghe
+ */
 public class DecodeThread extends Thread {
 
     private OnDecoderListener mOnDecoderListener;
