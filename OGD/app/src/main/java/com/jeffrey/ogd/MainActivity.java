@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
+import com.jeffrey.ogd.util.GLUtils;
+
 /**
  * @author caizhenghe
  */
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         // 配置渲染表面
         if(GLUtils.isSupportGLES20(this)) {
             mGLSurfaceView.setEGLContextClientVersion(2);
-            mGLSurfaceView.setRenderer(new AirHockeyRenderer(this));
+            mGLSurfaceView.setRenderer(new AirHockeyTextureRenderer(this));
             mRendererSet = true;
         }
 

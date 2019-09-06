@@ -1,4 +1,4 @@
-package com.jeffrey.ogd;
+package com.jeffrey.ogd.util;
 
 import android.app.ActivityManager;
 import android.content.Context;
