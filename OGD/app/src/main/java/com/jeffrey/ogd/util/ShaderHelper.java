@@ -35,6 +35,7 @@ public class ShaderHelper {
         return validateStatus[0] != 0;
     }
 
+
     public static int linkProgram(int vertexShaderId, int fragmentShaderId) {
         final int programObjectId = glCreateProgram();
         if (programObjectId == 0) {
