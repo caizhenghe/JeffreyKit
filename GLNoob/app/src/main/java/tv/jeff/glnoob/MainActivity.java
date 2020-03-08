@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
             // Tell the surface view we want to create an OpenGL ES 3.0-compatible
             // context, and set an OpenGL ES 3.0-compatible renderer.
             mGLView.setEGLContextClientVersion(CONTEXT_CLIENT_VERSION);
-            mGLView.setRenderer(new TriangleRenderer());
+//            mGLView.setRenderer(new TriangleRenderer());
+            mGLView.setRenderer(new TextureRenderer());
+//            mGLView.setRenderer(new SimpleTexture2DRenderer(this));
         } else {
             Log.e("HelloTriangle", "OpenGL ES 3.0 not supported on device.  Exiting...");
             mGLView.setRenderer(new GLSurfaceView.Renderer() {

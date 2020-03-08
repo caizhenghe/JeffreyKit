@@ -13,43 +13,39 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class TriangleRenderer implements GLSurfaceView.Renderer {
     private static String TAG = TriangleRenderer.class.getSimpleName();
-    private final float[] mVerticesData = {
-            0.0f, 0.5f, 0.0f,
-            -0.5f, -0.5f, 0.0f,
-            0.5f, -0.5f, 0.0f};
     private FloatBuffer mVertices;
     private int mWidth;
     private int mHeight;
-    // 顶点着色器
-    private String mVShaderStr =
-            "#version 300 es\n" +
-                    "in vec4 vPosition;\n" +
-                    "void main()\n" +
-                    "{\n" +
-                    "   gl_Position = vPosition;\n" +
-                    "}\n";
-    // 片段着色器
-    private String mFShaderStr =
-            "#version 300 es\n" +
-                    "precision mediump float;\n" +
-                    "out vec4 fragColor;\n" +
-                    "void main()\n" +
-                    "{\n" +
-                    "   fragColor = vec4 (1.0f, 0.0f, 0.0f, 1.0f);\n" +
-                    "}\n";
-
     private int mProgramObject;
 
-
     public TriangleRenderer() {
-        mVertices = ByteBuffer.allocateDirect(mVerticesData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-        mVertices.put(mVerticesData).position(0);
+        float[] verticesData = {
+                0.0f, 0.5f, 0.0f,
+                -0.5f, -0.5f, 0.0f,
+                0.5f, -0.5f, 0.0f};
+        mVertices = ByteBuffer.allocateDirect(verticesData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+        mVertices.put(verticesData).position(0);
     }
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
-        int vertexShader = loadShader(GLES30.GL_VERTEX_SHADER, mVShaderStr);
-        int fragmentShader = loadShader(GLES30.GL_FRAGMENT_SHADER, mFShaderStr);
+        // 顶点着色器
+        String vShaderStr = "#version 300 es\n" +
+                "in vec4 vPosition;\n" +
+                "void main()\n" +
+                "{\n" +
+                "   gl_Position = vPosition;\n" +
+                "}\n";
+        // 片段着色器
+        String fShaderStr = "#version 300 es\n" +
+                "precision mediump float;\n" +
+                "out vec4 fragColor;\n" +
+                "void main()\n" +
+                "{\n" +
+                "   fragColor = vec4 (1.0f, 0.0f, 0.0f, 1.0f);\n" +
+                "}\n";
+        int vertexShader = loadShader(GLES30.GL_VERTEX_SHADER, vShaderStr);
+        int fragmentShader = loadShader(GLES30.GL_FRAGMENT_SHADER, fShaderStr);
 
         int programObject = GLES30.glCreateProgram();
         int[] linked = new int[1];
